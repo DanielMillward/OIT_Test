@@ -6,10 +6,15 @@ const app = express();
 const PORT = 8080;
 
 // Use CORS middleware
+
 app.use(cors());
 
+
+
 app.get('/movies', (req, res) => {
-    const searchTitle = req.query.search;
+    // Retrieve the 'title' query parameter from the request
+    const searchTitle = req.query.title;
+    console.log("Searched for:", searchTitle);
     fetchTMDB(searchTitle)
         .then(data => {
             res.json(data);

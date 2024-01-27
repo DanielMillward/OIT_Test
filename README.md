@@ -8,7 +8,7 @@ add logo ai generated
 SEO and metadata: https://nuxt.com/docs/getting-started/seo-meta
 
 ## TODO
-[ ] Add basic API call to TMDB in express
+[X] Add basic API call to TMDB in express
 [ ] Add test cases for that
 [ ] Add search text and button to frontend
 [ ] Add results to frontend
