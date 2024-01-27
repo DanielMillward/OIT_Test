@@ -22,9 +22,17 @@ This starts a server running on localhost:8080.
 For this, run the following:
 ```bash
 cd webapp
+npm install
 npm run dev -- -o
 ```
-That runs the dev server on localhost:3000.
+That runs the dev server on localhost:3000. Alternatively, you could do:
+
+```bash
+cd webapp
+npm install
+npm run build
+npm run start
+```
 
 ## Future improvements
 - [ ] Convert token to a json file or github secrets
