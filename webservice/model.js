@@ -22,7 +22,7 @@ function fetchTMDB(query_string, pageNum = 1) {
             const output = responseData.map(movie => ({
                 movie_id: movie.id,
                 title: movie.title,
-                poster_image_url: movie.poster_path,
+                poster_image_url: "https://image.tmdb.org/t/p/w200/" + movie.poster_path,
                 popularity_summary: `${movie.popularity} out of ${movie.vote_count}`
             }));
             return output;
