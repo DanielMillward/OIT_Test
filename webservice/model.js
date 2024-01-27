@@ -2,10 +2,10 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const token = require('./token')
 
-function fetchTMDB() {
-    const url = 'https://api.themoviedb.org/3/search/movie?query=the%20matrix&include_adult=false&language=en-US&page=1';
+function fetchTMDB(query_string, pageNum = 1) {
+    const htmlSafeString = encodeURIComponent(query_string);
+    const url = 'https://api.themoviedb.org/3/search/movie?query=' + htmlSafeString + '&include_adult=false&language=en-US&page=' + String(pageNum);
     const authToken = token;
-    console.log("token", authToken)
     const options = {
         method: 'GET',
         headers: {
@@ -14,11 +14,25 @@ function fetchTMDB() {
         }
     };
 
-    fetch(url, options)
+    // Return the entire promise chain
+    return fetch(url, options)
         .then(res => res.json())
-        .then(json => console.log(json))
-        .catch(err => console.error('error:' + err));
+        .then(json => {
+            const responseData = json.results.slice(0, 10);
+            const output = responseData.map(movie => ({
+                movie_id: movie.id,
+                title: movie.title,
+                poster_image_url: movie.poster_path,
+                popularity_summary: `${movie.popularity} out of ${movie.vote_count}`
+            }));
+            return output;
+        })
+        .catch(err => {
+            console.error('error:' + err);
+            throw err; // Rethrow the error so it can be caught by the caller
+        });
 }
+
 
 
 module.exports = fetchTMDB;

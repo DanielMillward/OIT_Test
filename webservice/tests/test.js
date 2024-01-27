@@ -1,3 +1,3 @@
 const fetchTMDB = require("../model");
 
-fetchTMDB();
+fetchTMDB("James Bond");
