@@ -3,6 +3,13 @@ const fs = require("fs");
 const token = require('./token')
 
 function fetchTMDB(query_string, pageNum = 1) {
+    if (query_string === null || query_string === '') {
+        return [];
+    }
+    if (typeof query_string !== 'string') {
+        throw new Error("query_string must be a string.");
+    }
+
     const htmlSafeString = encodeURIComponent(query_string);
     const url = 'https://api.themoviedb.org/3/search/movie?query=' + htmlSafeString + '&include_adult=false&language=en-US&page=' + String(pageNum);
     const authToken = token;
