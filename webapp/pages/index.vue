@@ -6,7 +6,7 @@
         </div>
         <div v-if="loading">Loading...</div>
         <div v-else>
-            <div v-if="movies.length === 0">
+            <div v-if="searchPerformed && movies.length === 0">
                 No movies found.
             </div>
             <div v-else class="movie-container">
@@ -66,7 +66,8 @@ export default {
         return {
             loading: false,
             movies: [],
-            searchQuery: ''
+            searchQuery: '',
+            searchPerformed: false
         };
     },
     mounted() {
@@ -79,6 +80,7 @@ export default {
                 return;
             }
             this.loading = true;
+            this.searchPerformed = true;
             // Adjust the endpoint URL to include the search query
             const endpoint = `http://localhost:8080/movies?title=${encodeURIComponent(this.searchQuery.trim())}`;
             fetch(endpoint)
