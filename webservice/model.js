@@ -23,7 +23,7 @@ function fetchTMDB(query_string, pageNum = 1) {
                 movie_id: movie.id,
                 title: movie.title,
                 poster_image_url: "https://image.tmdb.org/t/p/w200/" + movie.poster_path,
-                popularity_summary: `${movie.popularity} out of ${movie.vote_count}`
+                popularity_summary: `Popularity: ${movie.popularity}. Number of votes: ${movie.vote_count}`
             }));
             return output;
         })

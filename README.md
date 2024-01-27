@@ -9,7 +9,8 @@ SEO and metadata: https://nuxt.com/docs/getting-started/seo-meta
 
 ## TODO
 [X] Add basic API call to TMDB in express
-[ ] Add test cases for that
-[ ] Add search text and button to frontend
-[ ] Add results to frontend
+[X] Add search text and button to frontend
+[X] Add results to frontend
+[ ] prettify frontend
+[ ] Add test cases for backend
 [ ] Add testing to frontend
