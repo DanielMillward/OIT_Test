@@ -44,5 +44,5 @@ npm run start
 - [x] Add search text and button to frontend
 - [x] Add results to frontend
 - [x] prettify frontend
-- [ ] Add test cases for backend
+- [x] Add test cases for backend
 - [ ] Add testing to frontend
